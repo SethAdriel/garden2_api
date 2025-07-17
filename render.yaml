@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: garden-api
+    env: python
+    buildCommand: ./render-build.sh
+    startCommand: uvicorn main:app --host 0.0.0.0 --port 10000
+    plan: free
+    envVars: []
+    buildFilter:
+      paths:
+        - requirements.txt
+        - render.yaml
+        - render-build.sh
+        - main.py
+        - model/**
